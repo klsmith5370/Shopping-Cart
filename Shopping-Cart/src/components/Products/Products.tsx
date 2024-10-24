@@ -49,6 +49,26 @@ export const Products: FunctionComponent = () => {
     }
   }
 
+  const addToCart = (product: Product):void => {
+    product.quantity = 1
+
+    setCart((prevCart) => ({
+      ...prevCart,
+      [product.id]: product,
+    }))
+  }
+
+  const isInCart = (productId: number):boolean => Object.keys(cart || {}).includes(productId.toString())
+
+  if (error) {
+    return <h3 className={classes.error}>An error occurred when fetching data. Please check the API and try again.</h3>
+  }
+
+  if (isLoading) {
+    return <Loader />
+  }
+
+
   return (
     <section className={classes.productPage}>
       <h1>Products</h1>
@@ -65,3 +85,4 @@ export const Products: FunctionComponent = () => {
       </div>
     </section>
   )
+}
