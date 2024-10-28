@@ -4,7 +4,7 @@ import useLocalStorageState from 'use-local-storage-state'
 
 import logo from '/logo.svg'
 import { CartWidget } from '../Cart-Widget/CartWidget.tsx'
-// import { CartProps } from '../Products/Products.tsx'
+import { CartProps } from '../Products/Products.tsx'
 import classes from './header.module.scss'
 
 export const Header: FunctionComponent = () => {
@@ -40,9 +40,9 @@ export const Header: FunctionComponent = () => {
       productsCountElement.style.fontSize = "2em"
     }
   }
-  // const [cart,] = useLocalStorageState<CartProps>('cart', {})
+  const [cart,] = useLocalStorageState<CartProps>('cart', {})
 
-  // const productsCount: number = Object.keys(cart || {}).length
+  const productsCount: number = Object.keys(cart || {}).length
 
   return (
     <header>
@@ -52,7 +52,7 @@ export const Header: FunctionComponent = () => {
         </Link>
       </div>
       <div>
-        {/* <CartWidget productsCount={productsCount} /> */}
+        <CartWidget productsCount={productsCount} />
       </div>
     </header>
   )
